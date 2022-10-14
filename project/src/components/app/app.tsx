@@ -7,7 +7,6 @@ function App(): JSX.Element {
   return (
     <MainPage
       films={films}
-      limit={films.length}
       promoMovie={promoMovie}
     />
   );

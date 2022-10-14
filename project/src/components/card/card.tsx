@@ -7,7 +7,7 @@ type Props = {
 function Card(prop : Props): JSX.Element {
   const {film} = prop;
   return (
-    <article className="small-film-card catalog__films-card">
+    <article className="small-film-card catalog__films-card" key={film.name}>
       <div className="small-film-card__image">
         <img src={film.imageUrl} alt={film.name} width={280} height={175} />
       </div>

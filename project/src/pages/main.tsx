@@ -3,12 +3,11 @@ import {Film} from '../types/film';
 
 type Props = {
   films : Film[];
-  limit: number;
   promoMovie: Film;
 }
 
 function MainPage(props : Props): JSX.Element {
-  const {films, limit, promoMovie} = props;
+  const {films, promoMovie} = props;
   return (
     <div>
       <section className="film-card">
@@ -101,13 +100,7 @@ function MainPage(props : Props): JSX.Element {
             </li>
           </ul>
           <div className="catalog__films-list">
-            {films.slice(0, limit).map((film) =>
-              (
-                <div key={film.name}>
-                  <Card film={film}/>
-                </div>
-              )
-            )}
+            {films.map((film) => <Card key={film.name} film={film}/>)}
           </div>
           <div className="catalog__more">
             <button className="catalog__button" type="button">Show more</button>

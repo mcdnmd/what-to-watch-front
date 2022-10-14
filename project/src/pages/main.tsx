@@ -17,7 +17,7 @@ function MainPage(props : Props): JSX.Element {
         <h1 className="visually-hidden">WTW</h1>
         <header className="page-header film-card__head">
           <div className="logo">
-            <a className="logo__link">
+            <a className="logo__link" href='/'>
               <span className="logo__letter logo__letter--1">W</span>
               <span className="logo__letter logo__letter--2">T</span>
               <span className="logo__letter logo__letter--3">W</span>
@@ -30,7 +30,7 @@ function MainPage(props : Props): JSX.Element {
               </div>
             </li>
             <li className="user-block__item">
-              <a className="user-block__link">Sign out</a>
+              <a className="user-block__link" href='/'>Sign out</a>
             </li>
           </ul>
         </header>
@@ -108,7 +108,7 @@ function MainPage(props : Props): JSX.Element {
         </section>
         <footer className="page-footer">
           <div className="logo">
-            <a className="logo__link logo__link--light">
+            <a className="logo__link logo__link--light" href='/'>
               <span className="logo__letter logo__letter--1">W</span>
               <span className="logo__letter logo__letter--2">T</span>
               <span className="logo__letter logo__letter--3">W</span>

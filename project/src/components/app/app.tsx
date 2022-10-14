@@ -1,15 +1,14 @@
 import MainPage from '../../pages/main';
-import {films} from '../../mocks/films.mock';
+import { films } from '../../mocks/films.mock';
 
 
 function App(): JSX.Element {
+  const promoMovie = films[0];
   return (
     <MainPage
       films={films}
       limit={films.length}
-      promoMovieName={'The Grand Budapest Hotel'}
-      promoMovieGenre={'Drama'}
-      promoMovieCreationYear={2014}
+      promoMovie={promoMovie}
     />
   );
 }

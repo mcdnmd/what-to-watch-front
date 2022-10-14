@@ -28,7 +28,6 @@ function Player(): JSX.Element {
         </div>
       </div>
     </div>
-
   );
 }
 

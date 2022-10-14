@@ -1,5 +1,15 @@
+import MainPage from '../../pages/main';
+import { films } from '../../mocks/films.mock';
+
+
 function App(): JSX.Element {
-  return <p>Hello, world!</p>;
+  const promoMovie = films[0];
+  return (
+    <MainPage
+      films={films}
+      promoMovie={promoMovie}
+    />
+  );
 }
 
 export default App;

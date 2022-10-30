@@ -1,3 +1,9 @@
+import {Film} from "../types/film";
+
+type Props = {
+  film: Film;
+}
+
 function Player(): JSX.Element {
   return (
     <div className="player">

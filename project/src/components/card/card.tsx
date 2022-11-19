@@ -1,20 +1,26 @@
 import {Film} from '../../types/film';
+import {Link} from 'react-router-dom';
 
 type Props = {
   film: Film;
+  setActiveCard: (film: Film) => void;
 }
 
 function Card(prop : Props): JSX.Element {
-  const {film} = prop;
+  const {film, setActiveCard} = prop;
+
   return (
-    <article className="small-film-card catalog__films-card" key={film.name}>
+    <article className="small-film-card catalog__films-card"
+      onMouseEnter={() => setActiveCard(film)}
+      onMouseLeave={() => setActiveCard({} as Film)}
+    >
       <div className="small-film-card__image">
-        <img src={film.imageUrl} alt={film.name} width={280} height={175} />
+        <img src={film.posterImage} alt={film.name} width={280} height={175} />
       </div>
       <h3 className="small-film-card__title">
-        <a className="small-film-card__link" href="film-page.html">
+        <Link to={`/films/${film.id}`} className={'small-film-card__link'}>
           {film.name}
-        </a>
+        </Link>
       </h3>
     </article>
   );

@@ -1,6 +1,6 @@
 import {Film} from '../types/film';
 import List from '../components/list/list';
-import SiteLogo from "../components/site-logo/site-logo";
+import SiteLogo from '../components/site-logo/site-logo';
 
 type Props = {
   films : Film[];
@@ -43,7 +43,7 @@ function MainPage(props : Props): JSX.Element {
               <h2 className="film-card__title">{promoFilm.name}</h2>
               <p className="film-card__meta">
                 <span className="film-card__genre">{promoFilm.genre}</span>
-                <span className="film-card__year">{promoFilm.creationYear}</span>
+                <span className="film-card__year">{promoFilm.released}</span>
               </p>
 
               <div className="film-card__buttons">
@@ -65,6 +65,7 @@ function MainPage(props : Props): JSX.Element {
           </div>
         </div>
       </section>
+
       <div className="page-content">
         <section className="catalog">
           <h2 className="catalog__title visually-hidden">Catalog</h2>

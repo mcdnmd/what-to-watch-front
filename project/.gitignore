@@ -13,7 +13,7 @@
 
 # misc
 Thumbs.db
-.DS_Store
+*.DS_Store
 .env
 *.log*
 
@@ -22,7 +22,7 @@ yarn-debug.log*
 yarn-error.log*
 
 # editors
-.idea
+*.idea
 *.sublime*
 .vscode
 

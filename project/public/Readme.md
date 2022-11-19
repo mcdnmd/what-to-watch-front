@@ -2,11 +2,11 @@
 
 * `index.html` - контейнер;
 * `main.html` - страница «Main» (Главная страница);
-* `my-list.html` — страница «MyList» (Список фильмов «К просмотру»);
+* `my-list.html` — страница «MyListPage» (Список фильмов «К просмотру»);
 * `sign-in.html` - страница «Sign In» (Авторизация):
    * `sign-in-message.html` - с выводом сообщения;
    * `sign-in-error.html` — с выводом ошибки;
-* `player.html` — страница «Player» (Страница просмотра фильма):
+* `player.html` — страница «PlayerPage» (Страница просмотра фильма):
    * `player-pause.html` — с остановкой видео;
 * `movie-page.html` — страница «Card» (Страница c описанием фильма):
    * `movie-page-reviews.html` — с отзывами;

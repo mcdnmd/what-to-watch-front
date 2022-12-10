@@ -1,16 +1,11 @@
 import List from '../components/list/list';
-import {Film} from '../types/film';
 import {Link, useParams} from 'react-router-dom';
 import {getFilmById} from '../mocks/films.mock';
 import SiteLogo from '../components/site-logo/site-logo';
 import Tabs from '../components/tabs/tabs';
 
-type Props = {
-  films: Film[];
-}
 
-function FilmPage(props: Props): JSX.Element {
-  const {films} = props;
+function FilmPage(): JSX.Element {
   const {filmId} = useParams();
   const film = getFilmById(Number(filmId));
 
@@ -52,9 +47,6 @@ function FilmPage(props: Props): JSX.Element {
               </p>
 
               <div className="film-card__buttons">
-
-                {/*<Link to={`/player/${film.id}`} className={'btn btn--play film-card__button'}>Play</Link>*/}
-                {/*TODO ask about it */}
                 <Link to={`/player/${film.id}`} >
                   <button className="btn btn--play film-card__button" type="button">
                     <svg viewBox="0 0 19 19" width="19" height="19">
@@ -94,7 +86,7 @@ function FilmPage(props: Props): JSX.Element {
       <div className="page-content">
         <section className="catalog catalog--like-this">
           <h2 className="catalog__title">More like this</h2>
-          <List films={films} />
+          <List />
 
         </section>
 

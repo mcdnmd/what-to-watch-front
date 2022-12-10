@@ -1,4 +1,5 @@
 import {Film, RatingCategory} from '../types/film';
+import {Genre} from '../types/genre.enum';
 
 
 export const films: Film[] = [
@@ -14,7 +15,7 @@ export const films: Film[] = [
     director: 'Director',
     starring: ['Actor 1', 'Actor 2', 'Actor 3'],
     runTime: 60,
-    genre: 'crime',
+    genre: Genre.CRIME,
     released: 2010,
     id: 100,
     isFavorite: true,
@@ -37,7 +38,7 @@ export const films: Film[] = [
       'Benicio Del Toro'
     ],
     runTime: 104,
-    genre: 'Comedy',
+    genre: Genre.COMEDY,
     released: 2000,
     id: 1,
     isFavorite: false,
@@ -61,7 +62,7 @@ export const films: Film[] = [
       'Daniel Day-Lewis'
     ],
     runTime: 167,
-    genre: 'Crime',
+    genre: Genre.CRIME,
     released: 2002,
     id: 2,
     isFavorite: false,
@@ -85,7 +86,7 @@ export const films: Film[] = [
       'Tim Robbins'
     ],
     runTime: 116,
-    genre: 'Adventure',
+    genre: Genre.ADVENTURE,
     released: 2005,
     id: 3,
     isFavorite: false,
@@ -109,7 +110,7 @@ export const films: Film[] = [
       'Natalie Imbruglia'
     ],
     runTime: 88,
-    genre: 'Comedy',
+    genre: Genre.COMEDY,
     released: 2003,
     id: 4,
     isFavorite: false,
@@ -133,7 +134,7 @@ export const films: Film[] = [
       'Jason Schwartzman'
     ],
     runTime: 91,
-    genre: 'Adventure',
+    genre: Genre.ADVENTURE,
     released: 2007,
     id: 5,
     isFavorite: false,
@@ -157,7 +158,7 @@ export const films: Film[] = [
       'Natasia Demetriou'
     ],
     runTime: 30,
-    genre: 'Comedy',
+    genre: Genre.COMEDY,
     released: 2019,
     id: 6,
     isFavorite: false,
@@ -181,7 +182,7 @@ export const films: Film[] = [
       'Bruce Willis'
     ],
     runTime: 94,
-    genre: 'Adventure',
+    genre: Genre.ADVENTURE,
     released: 2012,
     id: 7,
     isFavorite: false,
@@ -205,7 +206,7 @@ export const films: Film[] = [
       'Kate Beckinsale'
     ],
     runTime: 170,
-    genre: 'Drama',
+    genre: Genre.DRAMA,
     released: 2014,
     id: 8,
     isFavorite: false,
@@ -229,7 +230,7 @@ export const films: Film[] = [
       'Quentin Crisp'
     ],
     runTime: 94,
-    genre: 'Drama',
+    genre: Genre.DRAMA,
     released: 1992,
     id: 9,
     isFavorite: false,
@@ -253,7 +254,7 @@ export const films: Film[] = [
       'Patcharawan Patarakijjanon'
     ],
     runTime: 119,
-    genre: 'Adventure',
+    genre: Genre.ADVENTURE,
     released: 2000,
     id: 10,
     isFavorite: false,
@@ -277,7 +278,7 @@ export const films: Film[] = [
       'Mark Ruffalo'
     ],
     runTime: 138,
-    genre: 'Thriller',
+    genre: Genre.THRILLER,
     released: 2010,
     id: 11,
     isFavorite: false,
@@ -301,7 +302,7 @@ export const films: Film[] = [
       'Luing Andrews'
     ],
     runTime: 92,
-    genre: 'Action',
+    genre: Genre.ACTION,
     released: 2008,
     id: 12,
     isFavorite: false,
@@ -325,7 +326,7 @@ export const films: Film[] = [
       'BD Wong'
     ],
     runTime: 136,
-    genre: 'Adventure',
+    genre: Genre.ADVENTURE,
     released: 1997,
     id: 13,
     isFavorite: false,
@@ -349,7 +350,7 @@ export const films: Film[] = [
       'Samuel L. Jackson'
     ],
     runTime: 153,
-    genre: 'Crime',
+    genre: Genre.CRIME,
     released: 1994,
     id: 14,
     isFavorite: false,
@@ -373,7 +374,7 @@ export const films: Film[] = [
       'Jack Madigan'
     ],
     runTime: 113,
-    genre: 'Drama',
+    genre: Genre.DRAMA,
     released: 2015,
     id: 15,
     isFavorite: false,
@@ -397,7 +398,7 @@ export const films: Film[] = [
       'Elizabeth McGovern'
     ],
     runTime: 229,
-    genre: 'Crime',
+    genre: Genre.CRIME,
     released: 1984,
     id: 16,
     isFavorite: false,
@@ -421,7 +422,7 @@ export const films: Film[] = [
       'Kirsten Dunst '
     ],
     runTime: 112,
-    genre: 'Action',
+    genre: Genre.ACTION,
     released: 2016,
     id: 17,
     isFavorite: false,
@@ -445,7 +446,7 @@ export const films: Film[] = [
       'Ezra Miller'
     ],
     runTime: 112,
-    genre: 'Drama',
+    genre: Genre.DRAMA,
     released: 2011,
     id: 18,
     isFavorite: false,
@@ -469,7 +470,7 @@ export const films: Film[] = [
       'Gwilym Lee'
     ],
     runTime: 134,
-    genre: 'Drama',
+    genre: Genre.DRAMA,
     released: 2018,
     id: 19,
     isFavorite: false,
@@ -493,7 +494,7 @@ export const films: Film[] = [
       'Carrie-Anne Moss'
     ],
     runTime: 136,
-    genre: 'Action',
+    genre: Genre.ACTION,
     released: 1999,
     id: 20,
     isFavorite: false,
@@ -517,7 +518,7 @@ export const films: Film[] = [
       'Will Poulter'
     ],
     runTime: 156,
-    genre: 'Action',
+    genre: Genre.ACTION,
     released: 2015,
     id: 21,
     isFavorite: false,
@@ -541,7 +542,7 @@ export const films: Film[] = [
       'Dan Fogler'
     ],
     runTime: 134,
-    genre: 'Fantasy',
+    genre: Genre.FANTASY,
     released: 2018,
     id: 22,
     isFavorite: false,
@@ -565,7 +566,7 @@ export const films: Film[] = [
       'Taron Egerton'
     ],
     runTime: 132,
-    genre: 'Crime',
+    genre: Genre.CRIME,
     released: 2015,
     id: 23,
     isFavorite: false,
@@ -589,7 +590,7 @@ export const films: Film[] = [
       'Sam Elliott'
     ],
     runTime: 136,
-    genre: 'Drama',
+    genre: Genre.DRAMA,
     released: 2018,
     id: 24,
     isFavorite: false,
@@ -613,7 +614,7 @@ export const films: Film[] = [
       'Josh Brolin'
     ],
     runTime: 122,
-    genre: 'Crime',
+    genre: Genre.CRIME,
     released: 2007,
     id: 25,
     isFavorite: false,

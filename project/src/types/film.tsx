@@ -1,3 +1,5 @@
+import {Genre} from './genre.enum';
+
 export type Film = {
   name: string;
   posterImage: string;
@@ -10,7 +12,7 @@ export type Film = {
   director: string;
   starring: string[];
   runTime: number;
-  genre: string;
+  genre: Genre;
   released: number;
   id: number;
   isFavorite: boolean;

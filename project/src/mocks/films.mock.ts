@@ -1,4 +1,4 @@
-import {Film} from '../types/film.js';
+import {Film, RatingCategory} from '../types/film';
 
 
 export const films: Film[] = [
@@ -624,4 +624,17 @@ export const films: Film[] = [
 
 export function getFilmById(id: number): Film | undefined {
   return films.find<Film>((film): film is Film => film.id === id);
+}
+
+export function getRatingCategoryByRating(rating: number): RatingCategory {
+  if (rating < 3) {
+    return RatingCategory.BAD;
+  } else if (rating < 5) {
+    return RatingCategory.NORMAL;
+  } else if (rating < 8) {
+    return RatingCategory.GOOD;
+  } else if (rating < 10) {
+    return RatingCategory.VERY_GOOD;
+  }
+  return RatingCategory.AWESOME;
 }

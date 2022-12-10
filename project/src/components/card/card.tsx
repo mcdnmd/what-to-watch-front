@@ -11,14 +11,14 @@ type Props = {
 
 function Card(prop : Props): JSX.Element {
   const {film, setActiveCard} = prop;
-  const [isPlayingPreview, setIsPlayingPreview] = useState<boolean>(false);
+  const [playing, setPlaying] = useState<boolean>(false);
   const [isStartToPlayPreview, setIsStartToPlayPreview] = useState<boolean>(false);
 
   useEffect(() => {
     let startPlaying = true;
 
     if (isStartToPlayPreview) {
-      setTimeout(() => startPlaying && setIsPlayingPreview(true), DELAY_BEFORE_PLAYING_PREVIEW);
+      setTimeout(() => startPlaying && setPlaying(true), DELAY_BEFORE_PLAYING_PREVIEW);
     }
     return (() => {startPlaying = false;});
   }, [isStartToPlayPreview]);
@@ -30,14 +30,14 @@ function Card(prop : Props): JSX.Element {
 
   const handleMouseLeave = () => {
     setIsStartToPlayPreview(false);
-    setIsPlayingPreview(false);
+    setPlaying(false);
     setActiveCard({} as Film);
   };
 
   return (
     <article className="small-film-card catalog__films-card" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
       <div className="small-film-card__image">
-        <VideoPlayer film={film} isPlaying={isPlayingPreview} isMuted width={280} height={175} />
+        <VideoPlayer film={film} isPlaying={playing} isMuted width={280} height={175} />
       </div>
       <h3 className="small-film-card__title">
         <Link to={`/films/${film.id}`} className={'small-film-card__link'}>

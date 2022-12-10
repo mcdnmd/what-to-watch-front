@@ -12,7 +12,7 @@ type Props = {
 function VideoPlayer(props: Props): JSX.Element {
   const {film, isPlaying, isMuted, width, height} = props;
   const videoRef = useRef<HTMLVideoElement | null>(null);
-  // console.log(props);
+
   useEffect(() => {
     if(videoRef.current === null) {
       return;

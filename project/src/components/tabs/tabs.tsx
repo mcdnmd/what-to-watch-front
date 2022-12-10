@@ -14,17 +14,6 @@ function Tabs(props: Props): JSX.Element {
   const {film} = props;
   const [activeTab, setActiveTab] = useState<Tab>(Tab.OVERVIEW);
 
-  const renderTab = () => {
-    switch (activeTab) {
-      case Tab.DETAILS:
-        return <DetailTab film={film} />;
-      case Tab.REVIEWS:
-        return <ReviewsTab reviews={reviews} />;
-      default:
-        return <OverviewTab film={film} />;
-    }
-  };
-
   return (
     <div className="film-card__desc">
       <nav className="film-nav film-card__nav">
@@ -41,9 +30,9 @@ function Tabs(props: Props): JSX.Element {
         </ul>
       </nav>
 
-      {
-        renderTab()
-      }
+      {activeTab === Tab.DETAILS && (<DetailTab film={film}/>)}
+      {activeTab === Tab.REVIEWS && (<ReviewsTab reviews={reviews}/>)}
+      {activeTab === Tab.OVERVIEW && (<OverviewTab film={film} />)}
     </div>
   );
 }

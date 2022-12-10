@@ -13,3 +13,5 @@ export enum AuthorizationStatus {
   NoAuth = 'NO_AUTH',
   Unknown = 'UNKNOWN',
 }
+
+export const DELAY_BEFORE_PLAYING_PREVIEW = 1;

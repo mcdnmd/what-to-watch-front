@@ -1,5 +1,6 @@
 import List from '../components/list/list';
 import SiteLogo from '../components/site-logo/site-logo';
+import { films } from '../mocks/films.mock';
 
 
 function MyListPage(): JSX.Element {
@@ -24,7 +25,7 @@ function MyListPage(): JSX.Element {
       <section className="catalog">
         <h2 className="catalog__title visually-hidden">Catalog</h2>
 
-        <List />
+        <List films={films} />
       </section>
 
       <footer className="page-footer">

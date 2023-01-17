@@ -15,3 +15,4 @@ export enum AuthorizationStatus {
 }
 
 export const DELAY_BEFORE_PLAYING_PREVIEW = 1;
+export const PAGINATION_AMOUNT = 8;

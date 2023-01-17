@@ -1,14 +1,17 @@
 import List from '../components/list/list';
-import {Link, useParams} from 'react-router-dom';
-import { films, getFilmById } from '../mocks/films.mock';
+import { Link, } from 'react-router-dom';
 import SiteLogo from '../components/site-logo/site-logo';
 import Tabs from '../components/tabs/tabs';
 import NotFound404 from './404-not-found';
+import { Film } from '../types/film';
 
+type Props = {
+  film: Film;
+  films: Film[];
+}
 
-function FilmPage(): JSX.Element {
-  const {filmId} = useParams();
-  const film = getFilmById(Number(filmId));
+function FilmPage(props: Props): JSX.Element {
+  const {film, films} = props;
 
   if (!film) {
     return <NotFound404/>;

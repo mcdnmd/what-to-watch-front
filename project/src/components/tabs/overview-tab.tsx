@@ -1,5 +1,4 @@
 import {Film} from '../../types/film';
-import {getRatingCategoryByRating} from '../../mocks/films.mock';
 
 type Props = {
   film: Film;
@@ -12,7 +11,7 @@ function OverviewTab(props: Props): JSX.Element {
       <div className="film-rating">
         <div className="film-rating__score">{film.rating}</div>
         <p className="film-rating__meta">
-          <span className="film-rating__level">{getRatingCategoryByRating(film.rating || 10)}</span>
+          <span className="film-rating__level">Fine</span>
           <span className="film-rating__count">{film.scoresCount}</span>
         </p>
       </div>

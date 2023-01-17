@@ -1,6 +1,6 @@
 import MainPage from '../../pages/main-page';
-import {BrowserRouter, Route, Routes} from 'react-router-dom';
-import {AppRoute, AuthorizationStatus} from '../../const';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { AppRoute } from '../../const';
 import SignIn from '../../pages/sign-in';
 import PrivateRoute from '../private-route/private-route';
 import MyListPage from '../../pages/my-list-page';
@@ -12,7 +12,7 @@ import { useAppSelector } from '../../hooks/store-handler';
 import Loader from '../loader/loader';
 
 function App(): JSX.Element {
-  const { isDataLoaded, filmList } = useAppSelector((state) => state);
+  const { isDataLoaded, filmList, authorizationStatus } = useAppSelector((state) => state);
   if (!isDataLoaded){
     return <Loader />;
   }
@@ -23,7 +23,7 @@ function App(): JSX.Element {
         <Route path={AppRoute.Main} element={<MainPage promoFilm={promoFilm} />} />
         <Route path={AppRoute.SignIn} element={<SignIn/>}/>
         <Route path={AppRoute.MyList} element={
-          <PrivateRoute authStatus={AuthorizationStatus.NoAuth}>
+          <PrivateRoute authStatus={authorizationStatus}>
             <MyListPage films={filmList} />
           </PrivateRoute>
         }

@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import SiteLogo from '../components/site-logo/site-logo';
 import ReviewForm from '../components/review-form/review-form';
 import { Film } from '../types/film';
+import UserProfileBlock from '../components/user-profile/user-profile';
 
 
 type Props = {
@@ -35,16 +36,7 @@ function AddReviewPage(props: Props): JSX.Element {
             </ul>
           </nav>
 
-          <ul className="user-block">
-            <li className="user-block__item">
-              <div className="user-block__avatar">
-                <img src="img/avatar.jpg" alt="User avatar" width={63} height={63} />
-              </div>
-            </li>
-            <li className="user-block__item">
-              <a href='/' className="user-block__link">Sign out</a>
-            </li>
-          </ul>
+          <UserProfileBlock />
         </header>
 
         <div className="film-card__poster film-card__poster--small">

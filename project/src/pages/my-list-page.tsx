@@ -1,6 +1,7 @@
 import List from '../components/list/list';
 import SiteLogo from '../components/site-logo/site-logo';
 import { Film } from '../types/film';
+import UserProfileBlock from '../components/user-profile/user-profile';
 
 type Props = {
   films: Film[];
@@ -15,16 +16,7 @@ function MyListPage(props: Props): JSX.Element {
         <SiteLogo/>
 
         <h1 className="page-title user-page__title">My list <span className="user-page__film-count">9</span></h1>
-        <ul className="user-block">
-          <li className="user-block__item">
-            <div className="user-block__avatar">
-              <img src="img/avatar.jpg" alt="User avatar" width={63} height={63} />
-            </div>
-          </li>
-          <li className="user-block__item">
-            <a className="user-block__link" href='/'>Sign out</a>
-          </li>
-        </ul>
+        <UserProfileBlock />
       </header>
 
       <section className="catalog">

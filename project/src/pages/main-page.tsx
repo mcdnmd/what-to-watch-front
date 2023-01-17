@@ -1,12 +1,13 @@
-import {Film} from '../types/film';
+import { Film } from '../types/film';
 import List from '../components/list/list';
 import SiteLogo from '../components/site-logo/site-logo';
 import GenreList from '../components/genre-list/genre-list';
-import {Genre} from '../types/genre.enum';
+import { Genre } from '../types/genre.enum';
 import { useState } from 'react';
 import { PAGINATION_AMOUNT } from '../const';
 import { useAppSelector } from '../hooks/store-handler';
 import ShowMore from '../components/show-more/show-more';
+import UserProfileBlock from '../components/user-profile/user-profile';
 
 type Props = {
   promoFilm: Film;
@@ -26,7 +27,6 @@ function MainPage(props : Props): JSX.Element {
     setShowedFilmsCount(showedFilmsCount + PAGINATION_AMOUNT);
   };
 
-
   return (
     <>
       <section className="film-card">
@@ -39,16 +39,7 @@ function MainPage(props : Props): JSX.Element {
         <header className="page-header film-card__head">
           <SiteLogo/>
 
-          <ul className="user-block">
-            <li className="user-block__item">
-              <div className="user-block__avatar">
-                <img src="img/avatar.jpg" alt="User avatar" width={63} height={63} />
-              </div>
-            </li>
-            <li className="user-block__item">
-              <a className="user-block__link" href='/'>Sign out</a>
-            </li>
-          </ul>
+          <UserProfileBlock />
         </header>
 
         <div className="film-card__wrap">

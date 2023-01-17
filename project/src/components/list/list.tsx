@@ -1,14 +1,21 @@
 import Card from '../card/card';
-import {useState} from 'react';
-import {useAppSelector} from '../../hooks/store-handler';
+import { useState } from 'react';
+import { Film } from '../../types/film';
 
-function List(): JSX.Element {
-  const {filmList} = useAppSelector((state) => state);
+type Props = {
+  films: Film[];
+};
+
+
+function List(props: Props): JSX.Element {
+  const {films} = props ;
   const [, setActiveCard] = useState({});
 
   return (
     <div className="catalog__films-list">
-      {filmList.map((film) => <Card key={film.id} film={film} setActiveCard={setActiveCard} />)}
+      {
+        films.map((film) => <Card key={film.id} film={film} setActiveCard={setActiveCard} />)
+      }
     </div>
   );
 }

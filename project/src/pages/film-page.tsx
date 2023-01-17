@@ -1,8 +1,9 @@
 import List from '../components/list/list';
 import {Link, useParams} from 'react-router-dom';
-import {getFilmById} from '../mocks/films.mock';
+import { films, getFilmById } from '../mocks/films.mock';
 import SiteLogo from '../components/site-logo/site-logo';
 import Tabs from '../components/tabs/tabs';
+import NotFound404 from './404-not-found';
 
 
 function FilmPage(): JSX.Element {
@@ -10,7 +11,7 @@ function FilmPage(): JSX.Element {
   const film = getFilmById(Number(filmId));
 
   if (!film) {
-    return <Link to={'/somerewwfkhfkuw'}/>;
+    return <NotFound404/>;
   }
 
   return (
@@ -86,7 +87,7 @@ function FilmPage(): JSX.Element {
       <div className="page-content">
         <section className="catalog catalog--like-this">
           <h2 className="catalog__title">More like this</h2>
-          <List />
+          <List films={films}/>
 
         </section>
 

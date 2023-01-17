@@ -3,7 +3,10 @@ import List from '../components/list/list';
 import SiteLogo from '../components/site-logo/site-logo';
 import GenreList from '../components/genre-list/genre-list';
 import {Genre} from '../types/genre.enum';
-import {films} from '../mocks/films.mock';
+import { useState } from 'react';
+import { PAGINATION_AMOUNT } from '../const';
+import { useAppSelector } from '../hooks/store-handler';
+import ShowMore from '../components/show-more/show-more';
 
 type Props = {
   promoFilm: Film;
@@ -11,6 +14,19 @@ type Props = {
 
 function MainPage(props : Props): JSX.Element {
   const {promoFilm} = props;
+  const [showedFilmsCount, setShowedFilmsCount] = useState(PAGINATION_AMOUNT);
+  const {activeGenre, filmList} = useAppSelector((state) => state);
+
+  const allGenres = [Genre.ALL_GENRES, ...new Set(filmList.map((film) => film.genre))];
+  const filteredFilms = filmList
+    .filter((film) => film.genre === activeGenre || activeGenre === Genre.ALL_GENRES)
+    .slice(0, showedFilmsCount);
+
+  const handleShowMoreClick = () => {
+    setShowedFilmsCount(showedFilmsCount + PAGINATION_AMOUNT);
+  };
+
+
   return (
     <>
       <section className="film-card">
@@ -72,13 +88,12 @@ function MainPage(props : Props): JSX.Element {
         <section className="catalog">
           <h2 className="catalog__title visually-hidden">Catalog</h2>
 
-          <GenreList genreList={[Genre.ALL_GENRES, ...new Set(films.map((film) => film.genre))]}/>
+          <GenreList genreList={allGenres}/>
 
-          <List/>
+          <List films={filteredFilms}/>
 
-          <div className="catalog__more">
-            <button className="catalog__button" type="button">Show more</button>
-          </div>
+          {filteredFilms.length % PAGINATION_AMOUNT === 0 && <ShowMore onClick={handleShowMoreClick}/>}
+
         </section>
         <footer className="page-footer">
           <SiteLogo light/>

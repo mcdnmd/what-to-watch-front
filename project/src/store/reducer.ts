@@ -1,14 +1,16 @@
-import {Genre} from '../types/genre.enum';
-import {films} from '../mocks/films.mock';
-import {createReducer} from '@reduxjs/toolkit';
-import {changeActiveGenre, setFilmList} from './action';
+import { Genre } from '../types/genre.enum';
+import { films } from '../mocks/films.mock';
+import { createReducer } from '@reduxjs/toolkit';
+import { changeActiveGenre, setFilmList } from './action';
+import { AppState } from '../types/store.type';
 
-const initialState = {
+const initialState: AppState = {
   activeGenre: Genre.ALL_GENRES,
   filmList: films
 };
 
-const reducer = createReducer(initialState, (builder) => {
+
+export const reducer = createReducer(initialState, (builder) => {
   builder
     .addCase(changeActiveGenre, (state, action) => {
       const {newGenre} = action.payload;
@@ -20,4 +22,3 @@ const reducer = createReducer(initialState, (builder) => {
     });
 });
 
-export {reducer};

@@ -15,15 +15,15 @@ function App(): JSX.Element {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path={AppRoute.Main} element={<MainPage films={films} promoFilm={promoMovie} />} />
+        <Route path={AppRoute.Main} element={<MainPage promoFilm={promoMovie} />} />
         <Route path={AppRoute.SignIn} element={<SignIn/>}/>
         <Route path={AppRoute.MyList} element={
           <PrivateRoute authStatus={AuthorizationStatus.NoAuth}>
-            <MyListPage films={films.slice(8)}/>
+            <MyListPage />
           </PrivateRoute>
         }
         />
-        <Route path={AppRoute.Film} element={<FilmPage films={films}/>}/>
+        <Route path={AppRoute.Film} element={<FilmPage />}/>
         <Route path={AppRoute.AddReview} element={<AddReviewPage />}/>
         <Route path={AppRoute.Player} element={<PlayerPage />}/>
         <Route path={AppRoute.NotFound} element={<NotFound404 />}/>

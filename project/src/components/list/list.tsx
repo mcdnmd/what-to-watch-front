@@ -1,18 +1,14 @@
-import { Film } from '../../types/film.js';
 import Card from '../card/card';
 import {useState} from 'react';
+import {useAppSelector} from '../../hooks/store-handler';
 
-type Props = {
-  films: Film[];
-}
-
-function List(prop: Props): JSX.Element {
-  const {films} = prop;
+function List(): JSX.Element {
+  const {filmList} = useAppSelector((state) => state);
   const [, setActiveCard] = useState({});
 
   return (
     <div className="catalog__films-list">
-      {films.map((film) => <Card key={film.id} film={film} setActiveCard={setActiveCard} />)}
+      {filmList.map((film) => <Card key={film.id} film={film} setActiveCard={setActiveCard} />)}
     </div>
   );
 }

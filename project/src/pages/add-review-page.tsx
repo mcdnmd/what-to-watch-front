@@ -1,12 +1,16 @@
-import {Link, useParams} from 'react-router-dom';
-import {getFilmById} from '../mocks/films.mock';
+import { Link } from 'react-router-dom';
 import SiteLogo from '../components/site-logo/site-logo';
 import ReviewForm from '../components/review-form/review-form';
+import { Film } from '../types/film';
 
 
-function AddReviewPage(): JSX.Element {
-  const {filmId} = useParams();
-  const film = getFilmById(Number(filmId));
+type Props = {
+  film: Film;
+}
+
+
+function AddReviewPage(props: Props): JSX.Element {
+  const {film} = props;
 
   return (
     <section className="film-card film-card--full">

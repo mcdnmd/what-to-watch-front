@@ -1,10 +1,12 @@
-import {useParams} from 'react-router-dom';
-import {getFilmById} from '../mocks/films.mock';
+import { Film } from '../types/film';
 
 
-function PlayerPage(): JSX.Element {
-  const {filmId} = useParams();
-  const film = getFilmById(Number(filmId));
+type Props = {
+  film: Film;
+}
+
+function PlayerPage(props: Props): JSX.Element {
+  const {film} = props;
 
   return (
     <div className="player">

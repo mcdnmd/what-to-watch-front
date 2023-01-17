@@ -1,9 +1,14 @@
 import List from '../components/list/list';
 import SiteLogo from '../components/site-logo/site-logo';
-import { films } from '../mocks/films.mock';
+import { Film } from '../types/film';
 
+type Props = {
+  films: Film[];
+}
 
-function MyListPage(): JSX.Element {
+function MyListPage(props: Props): JSX.Element {
+  const {films} = props;
+
   return (
     <div className="user-page">
       <header className="page-header user-page__head">

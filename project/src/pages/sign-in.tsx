@@ -14,12 +14,14 @@ function SignIn(): JSX.Element {
 
   const loginRef = useRef<HTMLInputElement | null>(null);
   const passwordRef = useRef<HTMLInputElement | null>(null);
+  const isPasswordValid = (password: string) => password.match(/\w/) && password.match(/\d/);
   const dispatch = useAppDispatch();
 
   const handleFormSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    if (loginRef.current !== null && passwordRef.current !== null){
+    if (loginRef.current !== null && passwordRef.current !== null
+      && isPasswordValid(passwordRef.current.value)){
       dispatch(loginAction({
         login: loginRef.current.value,
         password: passwordRef.current.value
@@ -43,7 +45,7 @@ function SignIn(): JSX.Element {
         <form action="#" className="sign-in__form" onSubmit={handleFormSubmit}>
           <div className="sign-in__fields">
             <div className="sign-in__field">
-              <input className="sign-in__input" type="email" placeholder="Email address" name="user-email" id="user-email" />
+              <input className="sign-in__input" type="email" placeholder="Email address" name="user-email" id="user-email" ref={loginRef} />
               <label className="sign-in__label visually-hidden" htmlFor="user-email">Email address</label>
             </div>
             <div className="sign-in__field">

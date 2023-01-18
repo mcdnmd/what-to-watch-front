@@ -13,6 +13,8 @@ import { StatusCodes } from 'http-status-codes';
 import { redirectToRoute } from '../store/action';
 import { AppRoute, AuthorizationStatus } from '../const';
 import Loader from '../components/loader/loader';
+import { store } from '../store';
+import MyList from '../components/my-list/my-list';
 
 
 function FilmPage(): JSX.Element {
@@ -48,13 +50,21 @@ function FilmPage(): JSX.Element {
       .then(() => setDataLoaded(true))
       .catch((err: AxiosError) => {
         if (err.response && err.response.status === StatusCodes.NOT_FOUND) {
-          dispatch(redirectToRoute(AppRoute.NotFound));
+          store.dispatch(redirectToRoute(AppRoute.NotFound));
         }
       });
   }, [filmId]);
 
-  // eslint-disable-next-line no-console
-  console.log(reviews);
+  const handlePlayClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+    if (!film) {
+      return;
+    }
+
+    dispatch(redirectToRoute(`/player/${film.id}`));
+  };
+
+
   if (!dataLoaded) {
     return <Loader />;
   }
@@ -85,7 +95,7 @@ function FilmPage(): JSX.Element {
 
               <div className="film-card__buttons">
                 <Link to={`/player/${film?.id}`} >
-                  <button className="btn btn--play film-card__button" type="button">
+                  <button className="btn btn--play film-card__button" type="button" onClick={handlePlayClick}>
                     <svg viewBox="0 0 19 19" width="19" height="19">
                       <use xlinkHref="#play-s"/>
                     </svg>
@@ -93,13 +103,7 @@ function FilmPage(): JSX.Element {
                   </button>
                 </Link>
 
-                <button className="btn btn--list film-card__button" type="button">
-                  <svg viewBox="0 0 19 20" width="19" height="20">
-                    <use xlinkHref="#add"/>
-                  </svg>
-                  <span>My list</span>
-                  <span className="film-card__count">9</span>
-                </button>
+                {film && <MyList filmId={film.id} /> }
                 {
                   authorizationStatus === AuthorizationStatus.Auth &&
                   <Link to={`/films/${film?.id}/review`} className={'btn film-card__button'}>Add review</Link>

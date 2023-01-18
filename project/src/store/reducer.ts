@@ -1,6 +1,13 @@
 import { Genre } from '../types/genre.enum';
 import { createReducer } from '@reduxjs/toolkit';
-import { changeActiveGenre, changeAuthStatus, setDataLoadedStatus, setFilmList, setUser } from './action';
+import {
+  changeActiveGenre,
+  changeAuthStatus,
+  setDataLoadedStatus,
+  setFavoriteFilms,
+  setFilmList,
+  setUser
+} from './action';
 import { Film } from '../types/film';
 import { AuthorizationStatus } from '../const';
 import { User } from '../types/user.type';
@@ -11,6 +18,7 @@ type AppState = {
   isDataLoaded: boolean;
   authorizationStatus: AuthorizationStatus;
   user: User | null;
+  favoriteFilms: Film[];
 };
 
 const initialState: AppState = {
@@ -18,7 +26,8 @@ const initialState: AppState = {
   filmList: [],
   isDataLoaded: false,
   authorizationStatus: AuthorizationStatus.Unknown,
-  user: null
+  user: null,
+  favoriteFilms: []
 };
 
 
@@ -38,6 +47,9 @@ export const reducer = createReducer(initialState, (builder) => {
     })
     .addCase(setUser, (state, action) => {
       state.user = action.payload;
+    })
+    .addCase(setFavoriteFilms, (state, action) => {
+      state.favoriteFilms = action.payload;
     });
 });
 

@@ -21,7 +21,7 @@ function AddReviewPage(): JSX.Element {
   const handleSubmit = (reviewData: ReviewData) => {
     const addReview = async () => {
       setFormDisabled(true);
-      const url = `/comment/${filmId ? filmId : -1}`;
+      const url = `/comments/${filmId ? filmId : -1}`;
       await api.post(url, {comment: reviewData.text, rating: reviewData.rating});
     };
 
@@ -39,7 +39,7 @@ function AddReviewPage(): JSX.Element {
 
   useEffect(() => {
     const fetchFilm = async () => {
-      const {data: filmInfo} = await api.get<Film>(`/film/${filmId || -1}`);
+      const {data: filmInfo} = await api.get<Film>(`/films/${filmId || -1}`);
       setFilm(filmInfo);
     };
 

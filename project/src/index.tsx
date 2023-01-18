@@ -3,11 +3,12 @@ import ReactDOM from 'react-dom/client';
 import App from './components/app/app';
 import {Provider} from 'react-redux';
 import {store} from './store';
-import { checkAuthAction, fetchFilmAction } from './store/api-action';
+import { checkAuthAction, fetchFavoriteFilms, fetchFilmAction } from './store/api-action';
 import { ToastContainer } from 'react-toastify';
 
 store.dispatch(checkAuthAction());
 store.dispatch(fetchFilmAction());
+store.dispatch(fetchFavoriteFilms());
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement,

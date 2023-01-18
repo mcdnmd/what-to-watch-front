@@ -1,5 +1,5 @@
 import MainPage from '../../pages/main-page';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import { AppRoute } from '../../const';
 import SignIn from '../../pages/sign-in';
 import PrivateRoute from '../private-route/private-route';
@@ -10,6 +10,8 @@ import PlayerPage from '../../pages/player-page';
 import NotFound404 from '../../pages/404-not-found';
 import { useAppSelector } from '../../hooks/store-handler';
 import Loader from '../loader/loader';
+import browserHistory from '../../browser-history';
+import HsitoryRouter from '../history-router/history-router';
 
 function App(): JSX.Element {
   const { isDataLoaded, filmList, authorizationStatus } = useAppSelector((state) => state);
@@ -18,7 +20,7 @@ function App(): JSX.Element {
   }
   const promoFilm = filmList[0];
   return (
-    <BrowserRouter>
+    <HsitoryRouter history={browserHistory}>
       <Routes>
         <Route path={AppRoute.Main} element={<MainPage promoFilm={promoFilm} />} />
         <Route path={AppRoute.SignIn} element={<SignIn/>}/>
@@ -28,12 +30,17 @@ function App(): JSX.Element {
           </PrivateRoute>
         }
         />
-        <Route path={AppRoute.Film} element={<FilmPage film={promoFilm} films={filmList}/>}/>
-        <Route path={AppRoute.AddReview} element={<AddReviewPage film={promoFilm}/>}/>
+        <Route path={AppRoute.Film} element={<FilmPage />}/>
+        <Route path={AppRoute.AddReview} element={
+          <PrivateRoute authStatus={authorizationStatus}>
+            <AddReviewPage />
+          </PrivateRoute>
+        }
+        />
         <Route path={AppRoute.Player} element={<PlayerPage film={promoFilm}/>}/>
         <Route path={AppRoute.NotFound} element={<NotFound404 />}/>
       </Routes>
-    </BrowserRouter>
+    </HsitoryRouter>
   );
 }
 

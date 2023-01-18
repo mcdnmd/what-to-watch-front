@@ -14,6 +14,8 @@ export enum AuthorizationStatus {
   Unknown = 'UNKNOWN',
 }
 
+export const MAX_RATING = 10;
+
 export const DELAY_BEFORE_PLAYING_PREVIEW = 1;
 export const PAGINATION_AMOUNT = 8;
 

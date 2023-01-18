@@ -3,15 +3,16 @@ import {useState} from 'react';
 import {Tab} from '../../types/tab.enum';
 import DetailTab from './detail-tab';
 import ReviewsTab from './reviews-tab';
-import {reviews} from '../../mocks/reviews.mock';
 import OverviewTab from './overview-tab';
+import { Review } from '../../types/review.type';
 
 type Props = {
   film: Film;
+  reviews: Review[];
 }
 
 function Tabs(props: Props): JSX.Element {
-  const {film} = props;
+  const {film, reviews} = props;
   const [activeTab, setActiveTab] = useState<Tab>(Tab.OVERVIEW);
 
   return (

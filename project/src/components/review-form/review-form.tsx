@@ -1,49 +1,65 @@
 import {ChangeEvent, useState} from 'react';
+import { ReviewData } from '../../types/review-data.type.';
+import RatingStar from './rating-star';
+import { MAX_RATING } from '../../const';
 
-type ReviewFormValue = {
-  startCount: number;
-  reviewText: string;
+type Props = {
+  disabled: boolean;
+  onSubmit: (reviewData: ReviewData) => void;
 }
 
-function ReviewForm() {
-  const [formValue, setFormValue] = useState<ReviewFormValue>({
-    startCount:0,
-    reviewText: ''
-  });
+function ReviewForm(props: Props) {
+  const { disabled, onSubmit } = props;
+  const [reviewText, setReviewText] = useState('');
+  const [rating, setRating] = useState(0);
 
   const handleReviewTextChange = (event: ChangeEvent<HTMLTextAreaElement>) => {
-    setFormValue((prevState) => ({
-      ...prevState,
-      reviewText: event.target.value
-    }));
+    setReviewText(event.target.value);
   };
 
-  const handleReviewStartChange = (event: ChangeEvent<HTMLInputElement>) => {
-    setFormValue((prevState) => ({
-      ...prevState,
-      startCount: Number(event.target.value)
-    }));
+  const handleRatingChange = (newRating: number) => {
+    setRating(newRating);
   };
+
+  const handleReviewSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    onSubmit({text: reviewText, rating: rating});
+  };
+
+  const ratings: JSX.Element[] = [...Array(MAX_RATING)] // eslint-disable-line @typescript-eslint/no-unsafe-assignment
+    .map((_, idx) =>
+      (
+        <RatingStar
+          key={idx} // eslint-disable-line react/no-array-index-key
+          score={idx + 1}
+          isChosen={rating === (idx + 1)}
+          onChange={handleRatingChange}
+        />
+      )
+    );
+
+  const isSubmitButtonDisabled = reviewText.length < 50 || reviewText.length > 400 || disabled;
 
   return (
-    <form action="#" className="add-review__form">
+    <form action="#" className="add-review__form" onSubmit={handleReviewSubmit}>
       <div className="rating">
         <div className="rating__stars">
-          {
-            Array.from(Array(10).keys()).map((i) => (
-              <span key={i}>
-                <input className="rating__input" id={`star-${i + 1}`} type="radio" name="rating" value={i + 1} checked={formValue.startCount === i + 1} onChange={handleReviewStartChange}/>
-                <label className="rating__label" htmlFor={`star-${i + 1}`}>Rating {i + 1}</label>
-              </span>
-            ))
-          }
+          {ratings}
         </div>
       </div>
 
       <div className="add-review__text">
-        <textarea className="add-review__textarea" name="review-text" id="review-text" placeholder="Review text" value={formValue.reviewText} onChange={handleReviewTextChange}/>
+        <textarea
+          disabled={disabled}
+          className="add-review__textarea"
+          name="review-text"
+          id="review-text"
+          placeholder="Review text"
+          value={reviewText}
+          onChange={handleReviewTextChange}
+        />
         <div className="add-review__submit">
-          <button className="add-review__btn" type="submit">Post</button>
+          <button className="add-review__btn" type="submit" disabled={isSubmitButtonDisabled}>Post</button>
         </div>
       </div>
     </form>

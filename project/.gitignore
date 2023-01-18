@@ -25,4 +25,5 @@ yarn-error.log*
 *.idea
 *.sublime*
 .vscode
-
+.DS_Store
+.idea

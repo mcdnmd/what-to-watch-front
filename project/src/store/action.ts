@@ -10,3 +10,4 @@ export const setDataLoadedStatus = createAction<boolean>('setDataLoadedStatus');
 export const changeAuthStatus = createAction<AuthorizationStatus>('changeAuthStatus');
 export const setUser = createAction<User>('setUser');
 export const redirectToRoute = createAction<AppRoute | string>('redirectToRoute');
+export const setFavoriteFilms = createAction<Film[]>('setFavoriteFilms');

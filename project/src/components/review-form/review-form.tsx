@@ -36,7 +36,7 @@ function ReviewForm(props: Props) {
           onChange={handleRatingChange}
         />
       )
-    );
+    ).reverse();
 
   const isSubmitButtonDisabled = reviewText.length < 50 || reviewText.length > 400 || disabled;
 

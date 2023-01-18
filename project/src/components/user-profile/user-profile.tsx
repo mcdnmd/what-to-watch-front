@@ -1,7 +1,7 @@
 import { useAppDispatch, useAppSelector } from '../../hooks/store-handler';
 import { logoutAction } from '../../store/api-action';
 import { Link } from 'react-router-dom';
-import { AuthorizationStatus } from '../../const';
+import { AppRoute, AuthorizationStatus } from '../../const';
 
 
 type Props = {
@@ -21,7 +21,10 @@ function AuthedUserProfileBlock(props: Props): JSX.Element {
     <>
       <li className="user-block__item">
         <div className="user-block__avatar">
-          <img src={avatarLink} alt="User avatar" width="63" height="63" />
+          <a href={AppRoute.MyList}>
+            <img src={avatarLink} alt="User avatar" width="63" height="63" />
+          </a>
+
         </div>
       </li>
       <li className="user-block__item">

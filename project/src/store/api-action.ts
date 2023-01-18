@@ -1,7 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { AppDispatch, State } from '../types/state.type';
 import { AxiosInstance } from 'axios';
-import { changeAuthStatus, setDataLoadedStatus, setFilmList, setUser } from './action';
+import { changeAuthStatus, setDataLoadedStatus, setFavoriteFilms, setFilmList, setUser } from './action';
 import { Film } from '../types/film';
 import { APIRoute } from '../types/APIRouter.enum';
 import { AuthData } from '../types/auth-data.type';
@@ -47,6 +47,7 @@ export const logoutAction = createAsyncThunk<void, undefined, {
   async (_arg, {dispatch, extra: api}) => {
     await api.delete(APIRoute.Logout);
     dispatch(changeAuthStatus(AuthorizationStatus.NoAuth));
+    dispatch(setFavoriteFilms([]));
     dropToken();
   }
 );
@@ -65,5 +66,17 @@ export const checkAuthAction = createAsyncThunk<void, undefined, {
     } catch {
       dispatch(changeAuthStatus(AuthorizationStatus.NoAuth));
     }
+  }
+);
+
+export const fetchFavoriteFilms = createAsyncThunk<void, undefined, {
+  dispatch: AppDispatch;
+  state: State;
+  extra: AxiosInstance;
+}>(
+  'data/fetchFavoriteFilms',
+  async (_arg, {dispatch, extra: api}) => {
+    const { data: favoriteFilms } = await api.get<Film[]>(APIRoute.Favorite);
+    dispatch(setFavoriteFilms(favoriteFilms));
   }
 );

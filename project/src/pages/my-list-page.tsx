@@ -1,28 +1,25 @@
 import List from '../components/list/list';
 import SiteLogo from '../components/site-logo/site-logo';
-import { Film } from '../types/film';
 import UserProfileBlock from '../components/user-profile/user-profile';
+import { useAppSelector } from '../hooks/store-handler';
 
-type Props = {
-  films: Film[];
-}
 
-function MyListPage(props: Props): JSX.Element {
-  const {films} = props;
+function MyListPage(): JSX.Element {
+  const { favoriteFilms } = useAppSelector((state) => state);
 
   return (
     <div className="user-page">
       <header className="page-header user-page__head">
         <SiteLogo/>
 
-        <h1 className="page-title user-page__title">My list <span className="user-page__film-count">9</span></h1>
+        <h1 className="page-title user-page__title">My list <span className="user-page__film-count">{favoriteFilms.length}</span></h1>
         <UserProfileBlock />
       </header>
 
       <section className="catalog">
         <h2 className="catalog__title visually-hidden">Catalog</h2>
 
-        <List films={films} />
+        <List films={favoriteFilms} />
       </section>
 
       <footer className="page-footer">

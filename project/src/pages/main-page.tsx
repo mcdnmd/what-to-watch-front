@@ -4,19 +4,20 @@ import SiteLogo from '../components/site-logo/site-logo';
 import GenreList from '../components/genre-list/genre-list';
 import { Genre } from '../types/genre.enum';
 import { useEffect, useState } from 'react';
-import { PAGINATION_AMOUNT } from '../const';
+import { AuthorizationStatus, PAGINATION_AMOUNT } from '../const';
 import { useAppDispatch, useAppSelector } from '../hooks/store-handler';
 import ShowMore from '../components/show-more/show-more';
 import UserProfileBlock from '../components/user-profile/user-profile';
 import { redirectToRoute } from '../store/action';
 import { api } from '../service/api';
 import { APIRoute } from '../types/APIRouter.enum';
+import MyList from '../components/my-list/my-list';
 
 
 function MainPage(): JSX.Element {
   const [promoFilm, setPromoFilm] = useState<Film | null>(null);
   const [showedFilmsCount, setShowedFilmsCount] = useState(PAGINATION_AMOUNT);
-  const {activeGenre, filmList} = useAppSelector((state) => state);
+  const {activeGenre, filmList, authorizationStatus} = useAppSelector((state) => state);
   const dispatch = useAppDispatch();
   const allGenres = [Genre.ALL_GENRES, ...new Set(filmList.map((film) => film.genre))];
   const filteredFilms = filmList
@@ -79,13 +80,7 @@ function MainPage(): JSX.Element {
                   </svg>
                   <span>Play</span>
                 </button>
-                <button className="btn btn--list film-card__button" type="button">
-                  <svg viewBox="0 0 19 20" width={19} height={20}>
-                    <use xlinkHref="#add" />
-                  </svg>
-                  <span>My list</span>
-                  <span className="film-card__count">9</span>
-                </button>
+                { authorizationStatus === AuthorizationStatus.Auth && promoFilm ? <MyList filmId={promoFilm?.id}/> : null }
               </div>
             </div>
           </div>

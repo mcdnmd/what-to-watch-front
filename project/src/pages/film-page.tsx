@@ -94,14 +94,12 @@ function FilmPage(): JSX.Element {
               </p>
 
               <div className="film-card__buttons">
-                <Link to={`/player/${film?.id}`} >
-                  <button className="btn btn--play film-card__button" type="button" onClick={handlePlayClick}>
-                    <svg viewBox="0 0 19 19" width="19" height="19">
-                      <use xlinkHref="#play-s"/>
-                    </svg>
-                    <span>Play</span>
-                  </button>
-                </Link>
+                <button className="btn btn--play film-card__button" type="button" onClick={handlePlayClick}>
+                  <svg viewBox="0 0 19 19" width="19" height="19">
+                    <use xlinkHref="#play-s"/>
+                  </svg>
+                  <span>Play</span>
+                </button>
 
                 {film && <MyList filmId={film.id} /> }
                 {

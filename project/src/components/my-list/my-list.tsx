@@ -4,7 +4,6 @@ import { AppRoute, AuthorizationStatus } from '../../const';
 import { redirectToRoute } from '../../store/action';
 import { api } from '../../service/api';
 import { Film } from '../../types/film';
-import { store } from '../../store';
 import { APIRoute } from '../../types/APIRouter.enum';
 import { fetchFavoriteFilms } from '../../store/api-action';
 
@@ -18,7 +17,7 @@ function MyList(props: Props): JSX.Element {
   const [isFavorite, setFavorite] = useState(favoriteFilms.some((film: Film) => film.id === filmId));
   const dispatch = useAppDispatch();
 
-  const handleMyListClick = () => (event: React.MouseEvent<HTMLButtonElement>) => {
+  const handleMyListClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
     if (authorizationStatus !== AuthorizationStatus.Auth){
       dispatch(redirectToRoute(AppRoute.SignIn));
@@ -31,7 +30,7 @@ function MyList(props: Props): JSX.Element {
     };
 
     changeFavoriteFilmStatus()
-      .then(() => store.dispatch(fetchFavoriteFilms()));
+      .then(() => dispatch(fetchFavoriteFilms()));
   };
 
 

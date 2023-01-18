@@ -28,7 +28,7 @@ function AuthedUserProfileBlock(props: Props): JSX.Element {
         </div>
       </li>
       <li className="user-block__item">
-        <a className="user-block__link" onClick={handleSignOutClick}>Sign out</a>
+        <Link to={AppRoute.Main} className="user-block__link" onClick={handleSignOutClick}>Sign out</Link>
       </li>
     </>
   );
